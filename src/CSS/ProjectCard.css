@@ -1,0 +1,110 @@
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #333;
+}
+
+.project-image-container {
+  flex: 1;
+  overflow: hidden; /* Add this to hide overflowing image */
+  height: 100%; /* Add this to make the container the same height as the card */
+}
+
+.project-image {
+  width: 100%; /* Add this to make the image fill the container width */
+  height: 100%; /* Add this to make the image fill the container height */
+  object-fit: cover; /* Add this to cover the container with the image */
+}
+
+.project-details {
+  flex: 1;
+}
+
+/* Rest of your CSS styles remain unchanged */
+
+.project-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.project-tagline {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.project-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.tech-stack {
+  flex: 1; /* Adjust flex value */
+}
+
+.tech-stack h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.tech-stack ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tech-stack li {
+  font-size: 14px;
+  color: #888;
+}
+
+.project-links {
+  display: flex;
+  flex-direction: column; /* Display links vertically */
+  align-items: flex-end; /* Align links to the right */
+}
+
+.project-link {
+  display: inline-block;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #007bff;
+  padding: 5px 10px;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .project {
+    flex-direction: column; !* Stack elements vertically on smaller screens *!
+    align-items: flex-start; !* Align elements to the left on smaller screens *!
+  }
+
+  .project-image-container {
+    width: 100%; !* Make the image container full width on smaller screens *!
+    height: auto; !* Allow image container to adjust height *!
+  }
+
+  .project-image {
+    width: 100%; !* Make the image full width on smaller screens *!
+    height: auto; !* Allow the image to adjust height *!
+  }
+
+  .project-details {
+    width: 100%; !* Make project details full width on smaller screens *!
+    margin-top: 10px; !* Add some space between the image and details *!
+  }
+
+  .project-links {
+    width: 100%; !* Make links full width on smaller screens *!
+    margin-top: 10px; !* Add some space between details and links *!
+  }
+}

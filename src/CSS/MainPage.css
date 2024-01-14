@@ -1,0 +1,10 @@
+.animated-element {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
