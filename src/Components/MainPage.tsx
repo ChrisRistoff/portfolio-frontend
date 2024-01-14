@@ -4,26 +4,28 @@ import "../CSS/MainPage.css";
 import { ContactForm } from "./ContactForm.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import {getPersonalInfo} from "../utils/getPersonalInfo.tsx";
 
 export const Home = () => {
-    // Sample data
-    const profileData = {
-        Id: 1,
-        Name: "Krasen Hristov",
-        Email: "krsnhrstv@gmail.com",
-        Bio:
-            "My journey in the world of technology is fueled by a strong passion for learning and mastering the intricate aspects of server-side development. I am deeply engaged in understanding the fundamentals of scalable and efficient system design, eager to explore various technologies and methodologies.",
-        Github: "https://github.com/krasenHristov",
-        Linkedin: null,
-        Image: "https://avatars.githubusercontent.com/u/59872801?v=4",
-    };
+    
     const [animate, setAnimate] = useState(false);
+    const [profileData, setProfileData] = useState({});
 
     useEffect(() => {
+        const getProfileData = async () => {
+            try {
+                let data: ProfileData;
+                data = await getPersonalInfo();
+                setProfileData(data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
         const animationTimeout = setTimeout(() => {
             setAnimate(true);
         }, 500);
-
+            
+        getProfileData();
         return () => clearTimeout(animationTimeout);
     }, []);
 
@@ -36,19 +38,19 @@ export const Home = () => {
                         Hello, I am
                     </h2>
                     <h1 className={animate ? "animated-element animate-in" : "animated-element"}>
-                        {profileData.Name}
+                        {profileData.name}
                     </h1>
                     <p className={animate ? "animated-element animate-in" : "animated-element"}>
-                        {profileData.Bio}
+                        {profileData.bio}
                     </p>
                     <p className={animate ? "animated-element animate-in" : "animated-element"}>
-                        <a href={profileData.Github} target="_blank" rel="noopener noreferrer">
+                        <a href={profileData.github} target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faGithub}/> Visit GitHub
                         </a>
                     </p>
-                    {profileData.Linkedin && (
+                    {profileData.linkedin && (
                         <p className={animate ? "animated-element animate-in" : "animated-element"}>
-                            Linkedin: <a href={profileData.Linkedin}>{profileData.Linkedin}</a>
+                            Linkedin: <a href={profileData.linkedin}>{profileData.linkedin}</a>
                         </p>
                     )}
                 </Col>
@@ -56,8 +58,8 @@ export const Home = () => {
                 {/* column on right */}
                 <Col md={6}>
                     <Image
-                        src={profileData.Image}
-                        alt={profileData.Name}
+                        src={profileData.image}
+                        alt={profileData.name}
                         fluid
                         className={animate ? "animated-element animate-in" : "animated-element"}
                     />
@@ -70,3 +72,6 @@ export const Home = () => {
         </div>
     );
 };
+
+    export class ProfileData {
+    }

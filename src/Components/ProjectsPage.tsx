@@ -1,28 +1,43 @@
-import Project from "./Project"; // Import the Project component
+import { useEffect, useState } from "react";
+import Project from "./Project";
+import { getProjectInfo } from "../utils/getProjects";
 
 export const ProjectsPage = () => {
-    const projects = [
-    {
-        Id: 1,
-        Name: "Portfolio",
-        Tagline: "My personal website",
-        Description: "My personal website, built with ASP.NET Core 8 and C#.",
-        Image: "https://i.imgur.com/6Z2Q9ZM.png",
-        Repo: "www.github.com/krasenHristov/portfolio",
-        Link: "www.krasenhristov.com",
-        TechStack: ["C#", "ASP.NET Core", "PostgreSQL", "Docker", "Nginx"],
-        Type: "Backend",
-    },
-    ];
+    const [projects, setProjects] = useState([]);
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const getProjects = async () => {
+            try {
+                let data;
+                data = await getProjectInfo();
+                
+                console.log(data);
+
+                setProjects(data || []);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+                setLoading(false);
+            }
+        };
+
+        getProjects(); // Call the getProjects function here
+    }, []);
 
     return (
         <div className="projects-page">
-        <h1 className="page-title">Projects</h1>
-        <div className="projects-list">
-    {projects.map((project) => (
-            <Project key={project.Id} project={project} />
-        ))}
-    </div>
+            <h1 className="page-title">Projects</h1>
+            {loading ? (
+                <p>Loading projects...</p>
+            ) : (
+                <div className="projects-list">
+                    {projects.map((project: ProjectData) => (
+                        <Project key={project.name} project={project} />
+                    ))}
+                </div>
+            )}
         </div>
-        );
+    );
 };
