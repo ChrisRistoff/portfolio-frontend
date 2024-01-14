@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import {sendEmail} from "../utils/sendEmail.tsx";
 
 export const ContactForm = () => {
     const [showModal, setShowModal] = useState(false);
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+    
 
     const handleModalShow = () => {
         setShowModal(true);
@@ -11,10 +17,27 @@ export const ContactForm = () => {
     const handleModalClose = () => {
         setShowModal(false);
     };
-
-    const handleSubmit = (e: any) => {
+ 
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
-        handleModalClose();
+
+        console.log("Before sending email");
+
+        try {
+            // Call sendEmail and log its response
+            const response = await sendEmail({ name, email, subject, message });
+            console.log("Email sent successfully:", response);
+
+            // Clear the form fields and close the modal
+            setName("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
+
+            handleModalClose();
+        } catch (error) {
+            console.error("Error sending email:", error);
+        }
     };
 
     return (
@@ -39,6 +62,7 @@ export const ContactForm = () => {
                             <Form.Label style={{ color: "white" }}>Name</Form.Label>
                             <Form.Control
                                 type="text"
+                                onChange={(e) => setName(e.target.value)}
                                 placeholder="Your Name"
                                 required
                                 style={{ backgroundColor: "#444", color: "white" }}
@@ -48,9 +72,20 @@ export const ContactForm = () => {
                             <Form.Label style={{ color: "white" }}>Email</Form.Label>
                             <Form.Control
                                 type="email"
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Your Email"
                                 required
-                                style={{ backgroundColor: "#444", color: "#your-input-text-color" }}
+                                style={{ backgroundColor: "#444" }}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formSubject">
+                            <Form.Label style={{ color: "white" }}>Subject</Form.Label>
+                            <Form.Control
+                                type="text"
+                                onChange={(e) => setSubject(e.target.value)}
+                                placeholder="Subject"
+                                required
+                                style={{ backgroundColor: "#444" }}
                             />
                         </Form.Group>
                         <Form.Group controlId="formMessage">
@@ -58,6 +93,7 @@ export const ContactForm = () => {
                             <Form.Control
                                 as="textarea"
                                 rows={4}
+                                onChange={(e) => setMessage(e.target.value)}
                                 placeholder="Your Message"
                                 required
                                 style={{ backgroundColor: "#444" }}
@@ -68,7 +104,7 @@ export const ContactForm = () => {
                 </Modal.Body>
                 <Modal.Footer style={{ backgroundColor: "#444" }}>
 
-                    <Button variant="outline-light" type="submit">
+                    <Button variant="outline-light" onClick={handleSubmit}>
                         Submit
                     </Button> 
                     <Button variant="outline-light" onClick={handleModalClose}>

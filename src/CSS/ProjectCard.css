@@ -10,47 +10,49 @@
 
 .project-image-container {
   flex: 1;
-  overflow: hidden; /* Add this to hide overflowing image */
-  height: 100%; /* Add this to make the container the same height as the card */
+  overflow: hidden;
+  height: 100%;
 }
 
 .project-image {
-  width: 100%; /* Add this to make the image fill the container width */
-  height: 100%; /* Add this to make the image fill the container height */
-  object-fit: cover; /* Add this to cover the container with the image */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
 }
 
 .project-details {
   flex: 1;
 }
 
-/* Rest of your CSS styles remain unchanged */
-
 .project-name {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+  color: white; /* Added white color */
 }
 
 .project-tagline {
   font-size: 18px;
   margin-bottom: 10px;
-  color: white;
+  color: #ccc; /* Adjusted tagline color */
 }
 
 .project-description {
   font-size: 16px;
   margin-bottom: 10px;
+  color: #ccc; /* Adjusted description color */
 }
 
 .tech-stack {
-  flex: 1; /* Adjust flex value */
+  flex: 1;
 }
 
 .tech-stack h4 {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
+  color: white; /* Added white color */
 }
 
 .tech-stack ul {
@@ -65,8 +67,8 @@
 
 .project-links {
   display: flex;
-  flex-direction: column; /* Display links vertically */
-  align-items: flex-end; /* Align links to the right */
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .project-link {
@@ -84,27 +86,28 @@
 
 @media (max-width: 768px) {
   .project {
-    flex-direction: column; !* Stack elements vertically on smaller screens *!
-    align-items: flex-start; !* Align elements to the left on smaller screens *!
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .project-image-container {
-    width: 100%; !* Make the image container full width on smaller screens *!
-    height: auto; !* Allow image container to adjust height *!
+    width: 100%;
+    height: auto;
   }
 
   .project-image {
-    width: 100%; !* Make the image full width on smaller screens *!
-    height: auto; !* Allow the image to adjust height *!
+    width: 100%;
+    height: auto;
   }
 
   .project-details {
-    width: 100%; !* Make project details full width on smaller screens *!
-    margin-top: 10px; !* Add some space between the image and details *!
+    width: 100%;
+    margin-top: 10px;
   }
 
   .project-links {
-    width: 100%; !* Make links full width on smaller screens *!
-    margin-top: 10px; !* Add some space between details and links *!
+    width: 100%;
+    margin-top: 10px;
   }
 }
+

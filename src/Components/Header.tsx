@@ -7,8 +7,7 @@ export const Header = () => {
             <Navbar.Collapse id="navbar-nav" className="justify-content-end">
                 <Nav>
                     <Nav.Link href="/" className="mx-2">Home</Nav.Link>
-                    <Nav.Link href="/projects" className="mx-2">Portfolio</Nav.Link>
-                    <Nav.Link href="#contact" className="mx-2">Contact</Nav.Link>
+                    <Nav.Link href="/projects" className="mx-2">Projects</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

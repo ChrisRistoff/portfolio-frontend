@@ -1,10 +1,89 @@
+/* Background and General Styling */
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 40px;
+}
+
+/* Header Styling */
 .animated-element {
   opacity: 0;
-  transform: translateX(-20px);
+  transform: translateY(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: lightblue;
+}
+
+.bio {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .animate-in {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Image Styling */
+.img-fluid {
+  border-radius: 50%;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Links and Icons */
+.contact-link {
+  color: #00a4e4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #ff6b6b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px; /* Adjust font size for smaller screens */
+  }
+
+  h3 {
+    font-size: 20px; /* Adjust title font size for smaller screens */
+  }
+
+  p {
+    font-size: 16px; /* Adjust content font size for smaller screens */
+  }
+}
+

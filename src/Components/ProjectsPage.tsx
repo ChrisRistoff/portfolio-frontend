@@ -23,7 +23,7 @@ export const ProjectsPage = () => {
             }
         };
 
-        getProjects(); // Call the getProjects function here
+        getProjects();
     }, []);
 
     return (
