@@ -13,8 +13,6 @@ export const ProjectsPage = () => {
                 let data;
                 data = await getProjectInfo();
                 
-                console.log(data);
-
                 setProjects(data || []);
                 setLoading(false);
             } catch (error) {

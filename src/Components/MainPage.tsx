@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Row, Col, Image, Button } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import "../CSS/MainPage.css"; // Import your custom CSS file
 import { ContactForm } from "./ContactForm.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { getPersonalInfo } from "../utils/getPersonalInfo.tsx";
 
 export const Home = () => {
@@ -31,35 +30,21 @@ export const Home = () => {
     return (
         <div className="container">
             <Row>
-                {/* column on left */}
-                <Col md={6}>
-                    <h1 className={`animated-element ${animate ? "animate-in" : ""} title`}>
-                        {profileData.name}
-                    </h1>
-                    <h3 className={`animated-element ${animate ? "animate-in" : ""} subtitle`}>
-                        {profileData.title}
-                    </h3>
-                    <p className={`animated-element ${animate ? "animate-in" : ""} bio`}>
-                        {profileData.bio}
-                    </p>
-                    <p className={`animated-element ${animate ? "animate-in" : ""}`}>
-                        <a href={profileData.github} target="_blank" rel="noopener noreferrer"
-                           className="contact-link">
+                <Col md={6} className="profile-text">
+                    <h1 className={`animated-element ${animate ? "animate-in" : ""}`}>{profileData.name}</h1>
+                    <h3 className={`animated-element ${animate ? "animate-in" : ""}`}>{profileData.title}</h3>
+                    <p className={`animated-element ${animate ? "animate-in" : ""}`}>{profileData.bio}</p>
+                    <div className={`animated-element ${animate ? "animate-in" : ""}`}>
+                        <a href={profileData.github} target="_blank" rel="noopener noreferrer" className="contact-link">
                             <FontAwesomeIcon icon={faGithub}/> Visit GitHub
                         </a>
-                    </p>
-
-                    {profileData.linkedin && (
-                        <p className={`animated-element ${animate ? "animate-in" : ""}`}>
-                            <a href={profileData.linkedin} target="_blank" rel="noopener noreferrer"
-                               className="contact-link">
+                        {profileData.linkedin && (
+                            <a href={profileData.linkedin} target="_blank" rel="noopener noreferrer" className="contact-link">
                                 <FontAwesomeIcon icon={faLinkedin}/> Visit LinkedIn
                             </a>
-                        </p>
-                    )}
+                        )}
+                    </div>
                 </Col>
-
-                {/* column on right */}
                 <Col md={6}>
                     <Image
                         src={profileData.image}
@@ -69,17 +54,12 @@ export const Home = () => {
                     />
                 </Col>
             </Row>
-
-            <p className={animate ? "animated-element animate-in" : "animated-element"}>
+            <div className="contact-form-section">
                 <ContactForm />
-            </p>
-
-            <p className={animate ? "animated-element animate-in" : "animated-element"}>
-                <Button variant="outline-light" href="/projects">
-                    View My Projects
-                </Button>
-            </p>
+            </div>
+            <div className="projects-button">
+                <a href="/projects" className="btn btn-outline-light">View My Projects</a>
+            </div>
         </div>
     );
 };
-

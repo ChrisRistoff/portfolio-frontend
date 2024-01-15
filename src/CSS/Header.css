@@ -1,0 +1,25 @@
+/* Custom Navbar Styling */
+.custom-navbar {
+    background-color: #333;
+    padding: 10px 15px;
+    border-bottom: 2px solid #00a4e4;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.nav-link-custom {
+    color: #fff !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link-custom:hover, .nav-link-custom:focus {
+    color: #00a4e4 !important;
+    text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .custom-navbar {
+        padding: 5px 10px;
+    }
+}
