@@ -8,6 +8,7 @@ APP_DIR="$HOME/portfolio-frontend"
 
 echo "Starting deployment..."
 
+
 echo "Pulling the Docker image..."
 sudo docker pull $IMAGE_NAME
 
