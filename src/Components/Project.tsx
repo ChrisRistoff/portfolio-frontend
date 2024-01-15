@@ -1,6 +1,7 @@
 import "../CSS/ProjectCard.css"
 
 const Project = ({ project }) => {
+    
     return (
         <div className="project">
             <div className="project-details">

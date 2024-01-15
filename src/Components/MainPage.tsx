@@ -54,12 +54,14 @@ export const Home = () => {
                     />
                 </Col>
             </Row>
+            <div className={`animated-element ${animate ? "animate-in" : ""}`}>
             <div className="contact-form-section">
                 <ContactForm />
             </div>
             <div className="projects-button">
                 <a href="/projects" className="btn btn-outline-light">View My Projects</a>
             </div>
+        </div>
         </div>
     );
 };

@@ -1,19 +1,41 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import '../CSS/Login.css';
+import '../CSS/MainPage.css';
 import {loginAdmin} from "../utils/login.tsx"; // Import the CSS for the login page
+import { useNavigate } from 'react-router-dom';
+import {Alert} from "react-bootstrap";
 
 export const Login = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [animate, setAnimate] = useState(false);
 
-    const handleSubmit = (event) => {
-        loginAdmin(name, password);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const animationTimeout = setTimeout(() => {
+            setAnimate(true);
+        }, 500);
+
+        return () => clearTimeout(animationTimeout);
+    }, []);
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        try {
+            await loginAdmin(name, password);
+            navigate('/test-auth');
+        }
+        catch (error) {
+            setMessage(error.response.data);
+        }
     };
 
     return (
-        <div className="login-container">
+        <div className={`login-container animated-element ${animate ? "animate-in" : ""}`}>
             <form onSubmit={handleSubmit} className="login-form">
+                {message && <Alert variant="danger">{message}</Alert>}
                 <h2 className="login-title">Login</h2>
                 <div className="form-group">
                     <label htmlFor="name">Email</label>
