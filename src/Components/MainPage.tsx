@@ -4,11 +4,12 @@ import "../CSS/MainPage.css"; // Import your custom CSS file
 import { ContactForm } from "./ContactForm.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { getPersonalInfo } from "../utils/getPersonalInfo.tsx";
 
 export const Home = () => {
     const [animate, setAnimate] = useState(false);
-    const [profileData, setProfileData] = useState({});
+    const [profileData, setProfileData] = useState<any>({});
 
     useEffect(() => {
         const getProfileData = async () => {
@@ -52,7 +53,7 @@ export const Home = () => {
                         <p className={`animated-element ${animate ? "animate-in" : ""}`}>
                             <a href={profileData.linkedin} target="_blank" rel="noopener noreferrer"
                                className="contact-link">
-                                <FontAwesomeIcon icon={linkedIn}/> Visit LinkedIn
+                                <FontAwesomeIcon icon={faLinkedin}/> Visit LinkedIn
                             </a>
                         </p>
                     )}

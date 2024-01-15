@@ -33,7 +33,7 @@ export const ProjectsPage = () => {
                 <p>Loading projects...</p>
             ) : (
                 <div className="projects-list">
-                    {projects.map((project: ProjectData) => (
+                    {projects.map((project) => (
                         <Project key={project.name} project={project} />
                     ))}
                 </div>
