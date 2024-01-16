@@ -25,6 +25,7 @@
 
 .project-details {
   flex: 2;
+  white-space: pre-line;
 }
 
 .project-name {
