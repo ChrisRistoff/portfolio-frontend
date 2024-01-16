@@ -6,7 +6,7 @@ function setTokenInCookie(token: string) {
     const expireTime = time + 1000 * 3600; // 1 hour
     now.setTime(expireTime);
 
-    document.cookie = `authToken=${token}; expires=${now.toUTCString()}; path=/; Secure; SameSite=Lax`;
+    document.cookie = `authToken=${token}; expires=${now.toUTCString()}; path=/; SameSite=Strict`;
 }
 
 export function getTokenFromCookie() {
