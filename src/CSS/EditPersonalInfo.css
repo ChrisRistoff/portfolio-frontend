@@ -1,0 +1,73 @@
+.edit-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #00a4e4;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.info-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.info-field p, .info-field input, .info-field textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: white;
+  background-color: #555;
+  width: 100%;
+}
+
+.info-field-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: white;
+  background-color: #555;
+}
+
+.edit-button, .save-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #111;
+  background-color: #00a4e4;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.info-field-textarea {
+  height: 100px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: white;
+  background-color: #555;
+  width: 100%;
+  resize: vertical;
+}
+
+.edit-button:hover, .save-button:hover {
+  background-color: #0088cc;
+}
+
+@media (max-width: 768px) {
+  .edit-form {
+    padding: 20px;
+  }
+}
+

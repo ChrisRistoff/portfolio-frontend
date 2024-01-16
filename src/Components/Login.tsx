@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import '../CSS/Login.css';
 import '../CSS/MainPage.css';
-import {loginAdmin} from "../utils/login.tsx"; // Import the CSS for the login page
+import {loginAdmin} from "../utils/login.tsx";
 import { useNavigate } from 'react-router-dom';
 import {Alert} from "react-bootstrap";
 
@@ -17,15 +17,15 @@ export const Login = () => {
         const animationTimeout = setTimeout(() => {
             setAnimate(true);
         }, 500);
-
-        return () => clearTimeout(animationTimeout);
+ 
+       return () => clearTimeout(animationTimeout);
     }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             await loginAdmin(name, password);
-            navigate('/test-auth');
+            navigate('/admin');
         }
         catch (error) {
             setMessage(error.response.data);

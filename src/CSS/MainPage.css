@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
 
-/* Background and General Styling */
 body {
   background-color: #111;
   color: #fff;
@@ -13,7 +12,6 @@ body {
   padding: 40px;
 }
 
-/* Header Styling */
 .animated-element {
   opacity: 0;
   transform: translateY(-20px);
@@ -46,7 +44,6 @@ p {
   transform: translateY(0);
 }
 
-/* Image Styling */
 .profile-image {
   border-radius: 50%;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
@@ -58,7 +55,6 @@ p {
   transform: scale(1.03);
 }
 
-/* Links and Icons */
 .contact-link {
   display: inline-block;
   color: #00a4e4;
@@ -71,7 +67,6 @@ p {
   color: #ff6b6b;
 }
 
-/* Button Styling */
 button {
   background-color: transparent;
   color: #fff;
@@ -87,7 +82,6 @@ button:hover {
   border-color: #00a4e4;
 }
 
-/* Layout and Spacing */
 .profile-text {
   margin-bottom: 30px;
 }
@@ -97,7 +91,6 @@ button:hover {
   margin-top: 30px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   h1 {
     font-size: 32px;

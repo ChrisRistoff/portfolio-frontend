@@ -24,11 +24,8 @@ export const ContactForm = () => {
         console.log("Before sending email");
 
         try {
-            // Call sendEmail and log its response
-            const response = await sendEmail({ name, email, subject, message });
-            console.log("Email sent successfully:", response);
+            await sendEmail({ name, email, subject, message });
 
-            // Clear the form fields and close the modal
             setName("");
             setEmail("");
             setSubject("");

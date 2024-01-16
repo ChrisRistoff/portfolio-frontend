@@ -6,6 +6,8 @@ import {Home} from "./Components/MainPage.tsx";
 import {ProjectsPage } from "./Components/ProjectsPage.tsx"
 import Login from "./Components/Login.tsx";
 import {TestAuthPage} from "./Components/TestAuthPage.tsx";
+import AdminPage from "./Components/AdminPage.tsx";
+import {EditPersonalInfo} from "./Components/EditPersonalInfoPage.tsx";
 
 function App() {
     
@@ -17,6 +19,8 @@ function App() {
                 <Route path={"/login"} element={<Login />}/>
                 <Route path="/" element={<Home />}/>:
                 <Route path={"/projects"} element={<ProjectsPage />}/>
+                <Route path={"/admin"} element={<AdminPage />}/>
+                <Route path={"/edit-personal-info"} element={<EditPersonalInfo/>}/>
             </Routes>
         </>
     )
