@@ -46,8 +46,13 @@ export const EditProjects = () => {
         setIsModalOpen(false);
         
         try {
-            await deleteProject(projectId);
-            setUpdate(!update);
+            const res = await deleteProject(projectId);
+            if (res.status === 401) {
+                setAuthError(true);
+            }
+            else {
+                setUpdate(!update);
+            }
         } catch (error) {
             setAuthError(true);
         }
@@ -62,8 +67,27 @@ export const EditProjects = () => {
         setIsModalOpen(true);
     };
 
+
+    useEffect(() => {
+        let timeout;
+        if (authError) {
+            timeout = setTimeout(() => {
+                setAuthError(false);
+            }, 2000);
+        }
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [authError]);
+
     return (
         <div className={`edit-projects-container animated-element ${animate ? "animate-in" : ""}`}>
+            {authError && (
+                <div className="error-modal">
+                    <Alert variant="danger">Error: You are not authorized to do this!</Alert>
+                </div>
+            )}
             <h2>Edit Projects</h2>
             <ul>
                 {projects.map((project) => (
@@ -82,7 +106,6 @@ export const EditProjects = () => {
                 onConfirm={handleConfirmDelete}
                 project={projectToDelete}
             />
-            {authError && <Alert variant="danger">You are not authorized to delete a project!</Alert>}
         </div>
     );
 };

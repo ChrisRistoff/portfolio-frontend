@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getPersonalInfo } from '../utils/getPersonalInfo';
 import '../CSS/EditPersonalInfo.css';
+import "../CSS/ErrorModal.css";
 import {editBio, editTitle} from "../utils/editPersonalInfo.tsx";
 import {Alert, Spinner} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
@@ -46,7 +47,11 @@ export const EditPersonalInfo = () => {
         
         if (field === 'title') {
             try {
-                await editTitle(personalInfo[field]);
+                const res = await editTitle(personalInfo[field]);
+                
+                if (res.status === 401) {
+                    setAuthError(true);
+                }
             }
             catch (error) {
                 setAuthError(true);
@@ -55,7 +60,11 @@ export const EditPersonalInfo = () => {
         
         if (field === 'bio') {
             try {
-                await editBio(personalInfo[field]);
+                const res = await editBio(personalInfo[field]);
+                
+                if (res.status === 401) {
+                    setAuthError(true);
+                }
             }
             catch (error) {
                 setAuthError(true);
@@ -72,13 +81,32 @@ export const EditPersonalInfo = () => {
             const formData = new FormData();
             formData.append('file', uploadedImage);
             
-            await editImage(formData);
-            navigate('/');
+            const res = await editImage(formData);
+            
+            if (res.status === 401) {
+                setAuthError(true);
+            }
+            else {
+                navigate('/');
+            }
         }
         catch (error) {
             setAuthError(true);
         }
-    }
+    };
+
+    useEffect(() => {
+        let timeout;
+        if (authError) {
+            timeout = setTimeout(() => {
+                setAuthError(false);
+            }, 2000);
+        }
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [authError]);
 
     return (
         
@@ -90,6 +118,12 @@ export const EditPersonalInfo = () => {
                 </div>
             ) : (
                 <div className={`animated-element ${animate ? "animate-in" : ""}`}>
+                    {authError && (
+                        <div className="error-modal">
+                            <Alert variant="danger">Error: You are not authorized to do this!</Alert>
+                        </div>
+                    )}
+
                     <h2 className="edit-title">Edit Personal Information</h2>
                     <div className="info-section">
                         <label>Name:</label>
@@ -156,7 +190,6 @@ export const EditPersonalInfo = () => {
 
                 </div>
             )}
-            {authError && <Alert variant="danger">Error: You are not authorized to do this!</Alert>}
         </div>
     );
 };

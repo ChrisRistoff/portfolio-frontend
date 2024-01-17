@@ -60,8 +60,14 @@ const EditSingleProjectPage = () => {
         };
         
         try {
-            await updateProject(project.id, updatedProject);
-            navigate('/projects');
+            const res = await updateProject(project.id, updatedProject);
+            
+            if (res.status === 401) {
+                setAuthError(true);
+            }
+            else {
+                navigate('/projects');
+            }
         } catch (error) {
             setAuthError(true);
         }
@@ -83,8 +89,26 @@ const EditSingleProjectPage = () => {
         setProject({ ...project, techStack: updatedTechStack });
     };
 
+    useEffect(() => {
+        let timeout;
+        if (authError) {
+            timeout = setTimeout(() => {
+                setAuthError(false);
+            }, 2000);
+        }
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [authError]);
+
     return (
         <div className={`edit-project-container animated-element ${animate ? "animate-in" : ""}`}>
+            {authError && (
+                <div className="error-modal">
+                    <Alert variant="danger">Error: You are not authorized to do this!</Alert>
+                </div>
+            )}
             <h2>Edit Project</h2>
             <form onSubmit={(event) => handleSubmit(event, project)}>
             {/* Name */}
@@ -178,8 +202,6 @@ const EditSingleProjectPage = () => {
 
                 <button type="submit">Update Project</button>
             </form>
-
-            {authError && <Alert variant="danger">Error: You are not authorized to do this!</Alert>}
         </div>
     );
 }
