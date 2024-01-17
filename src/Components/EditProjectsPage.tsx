@@ -5,6 +5,7 @@ import {deleteProject} from "../utils/deleteProject.tsx";
 import {ConfirmationModal} from "./ConfirmationModal.tsx";
 import "../CSS/ConfirmationModal.css"
 import {useNavigate} from "react-router-dom";
+import {Alert} from "react-bootstrap";
 
 export const EditProjects = () => {
     const [projects, setProjects] = useState([]);
@@ -12,6 +13,7 @@ export const EditProjects = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [projectToDelete, setProjectToDelete] = useState(null);
     const [animate, setAnimate] = useState(false);
+    const [authError, setAuthError] = useState(false);
     
     const navigate = useNavigate();
     
@@ -47,7 +49,7 @@ export const EditProjects = () => {
             await deleteProject(projectId);
             setUpdate(!update);
         } catch (error) {
-            console.error(error);
+            setAuthError(true);
         }
     };
 
@@ -80,6 +82,7 @@ export const EditProjects = () => {
                 onConfirm={handleConfirmDelete}
                 project={projectToDelete}
             />
+            {authError && <Alert variant="danger">You are not authorized to delete a project!</Alert>}
         </div>
     );
 };

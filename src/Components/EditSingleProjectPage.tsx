@@ -3,6 +3,7 @@ import {getProjectById} from "../utils/getProjectById.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 import "../CSS/EditSingleProject.css";
 import {updateProject} from "../utils/updateProject.tsx";
+import {Alert} from "react-bootstrap";
 
 const EditSingleProjectPage = () => {
     const [project, setProject] = useState({
@@ -17,6 +18,7 @@ const EditSingleProjectPage = () => {
         type: ''
     });
     const [animate, setAnimate] = useState(false);
+    const [authError, setAuthError] = useState(false);
     
     const navigate = useNavigate();
     const params = useParams();
@@ -61,7 +63,7 @@ const EditSingleProjectPage = () => {
             await updateProject(project.id, updatedProject);
             navigate('/projects');
         } catch (error) {
-            console.error(error);
+            setAuthError(true);
         }
     }
     
@@ -176,6 +178,8 @@ const EditSingleProjectPage = () => {
 
                 <button type="submit">Update Project</button>
             </form>
+
+            {authError && <Alert variant="danger">Error: You are not authorized to do this!</Alert>}
         </div>
     );
 }

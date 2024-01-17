@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getProjectInfo} from "../utils/getProjects.tsx";
 import {createProject} from "../utils/createProject.tsx";
+import {Alert} from "react-bootstrap";
 
 export const CreateNewProjectPage = () => {
     const [project, setProject] = useState({
@@ -16,6 +17,7 @@ export const CreateNewProjectPage = () => {
         type: "Frontend"
     });
     const [animate, setAnimate] = useState(false);
+    const [authError, setAuthError] = useState(false);
     
     const navigate = useNavigate();
 
@@ -69,7 +71,7 @@ export const CreateNewProjectPage = () => {
             await createProject(newProject);
             navigate('/projects');
         } catch (error) {
-            console.error(error);
+            setAuthError(true);
         }
     }
     
@@ -194,6 +196,7 @@ export const CreateNewProjectPage = () => {
 
                 <button type="submit">Create Project</button>
             </form>
+            {authError && <Alert variant={"danger"}>You are not authorized to create a new project!</Alert>}
         </div>
     );
 }

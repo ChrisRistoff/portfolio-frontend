@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getPersonalInfo } from '../utils/getPersonalInfo';
 import '../CSS/EditPersonalInfo.css';
 import {editBio, editTitle} from "../utils/editPersonalInfo.tsx";
-import {Spinner} from "react-bootstrap";
+import {Alert, Spinner} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {editImage} from "../utils/editImage.tsx";
 
@@ -12,6 +12,8 @@ export const EditPersonalInfo = () => {
     const [animate, setAnimate] = useState(false);
     const [loading, setLoading] = useState(true);
     const [uploadedImage, setUploadedImage] = useState(null);
+    const [authError, setAuthError] = useState(false);
+    
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,7 +49,7 @@ export const EditPersonalInfo = () => {
                 await editTitle(personalInfo[field]);
             }
             catch (error) {
-                console.error('Error editing title:', error);
+                setAuthError(true);
             }
         }
         
@@ -56,7 +58,7 @@ export const EditPersonalInfo = () => {
                 await editBio(personalInfo[field]);
             }
             catch (error) {
-                console.error('Error editing bio:', error);
+                setAuthError(true);
             }
         }
         
@@ -74,7 +76,7 @@ export const EditPersonalInfo = () => {
             navigate('/');
         }
         catch (error) {
-            console.error('Error editing image:', error);
+            setAuthError(true);
         }
     }
 
@@ -154,6 +156,7 @@ export const EditPersonalInfo = () => {
 
                 </div>
             )}
+            {authError && <Alert variant="danger">Error: You are not authorized to do this!</Alert>}
         </div>
     );
 };
