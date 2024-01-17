@@ -8,10 +8,9 @@ export const TestAuthPage = () => {
     const handleTestAuth = async () => {
         try {
             const response = await testAuth();
-            setMessage(response);    
+            setMessage(response ? "Authorized" : "Not Authorized");    
         }
         catch (error) {
-            setMessage("Not Authorized");
         }
         
     }

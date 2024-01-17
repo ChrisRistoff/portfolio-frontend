@@ -1,4 +1,4 @@
-import { Nav, Navbar } from "react-bootstrap";
+import {Nav, Navbar} from "react-bootstrap";
 import "../CSS/Header.css";
 import "../CSS/MainPage.css";
 import {useEffect, useState} from "react";
@@ -23,6 +23,7 @@ export const Header = () => {
                     <Nav.Link href="/" className="nav-link-custom mx-2">Home</Nav.Link>
                     <Nav.Link href="/projects" className="nav-link-custom mx-2">Projects</Nav.Link>
                     <Nav.Link href="/login" className="nav-link-custom mx-2">Admin Login</Nav.Link>
+                    <Nav.Link href="/admin" className="nav-link-custom mx-2">Admin Panel</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

@@ -22,12 +22,17 @@ export const Admin = () => {
     const navigateToEditProjects = () => {
         navigate('/edit-projects');
     };
+    
+    const navigateToCreateProject = () => {
+        navigate('/create-project');
+    };
 
     return (
         <div className={`admin-container animated-element ${animate ? "animate-in" : ""}`}>
             <h2 className="admin-title">Admin Dashboard</h2>
             <button onClick={navigateToEditPersonalInfo} className="admin-button">Edit Personal Info</button>
             <button onClick={navigateToEditProjects} className="admin-button">Edit Projects</button>
+            <button onClick={navigateToCreateProject} className="admin-button">Create a new project</button>
         </div>
     );
 };

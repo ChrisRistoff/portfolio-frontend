@@ -1,52 +1,59 @@
-import { useState, useEffect } from 'react';
-import {getProjectById} from "../utils/getProjectById.tsx";
-import {useNavigate, useParams} from "react-router-dom";
-import "../CSS/EditSingleProject.css";
-import {updateProject} from "../utils/updateProject.tsx";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {getProjectInfo} from "../utils/getProjects.tsx";
+import {createProject} from "../utils/createProject.tsx";
 
-const EditSingleProjectPage = () => {
+export const CreateNewProjectPage = () => {
     const [project, setProject] = useState({
-        id: '',
-        name: '',
-        tagline: '',
-        description: '',
-        image: '',
-        repo: '',
-        link: '',
+        id: 0,
+        name: "",
+        tagline: "",
+        description: "",
+        image: "",
+        repo: "",
+        link: "",
         techStack: [],
-        type: ''
+        type: "Frontend"
     });
     const [animate, setAnimate] = useState(false);
     
     const navigate = useNavigate();
-    const params = useParams();
-    
+
     useEffect(() => {
         const animationTimeout = setTimeout(() => {
             setAnimate(true);
         }, 500);
- 
+
         return () => clearTimeout(animationTimeout);
     }, []);
-
+    
     useEffect(() => {
-        const getProject = async () => {
+        const getProjects = async () => {
             try {
-                const response = await getProjectById(params.projectId);
-                setProject(response);
+                const response = await getProjectInfo();
+                
+                let newId = 0;
+                
+                for (let i = 0; i < response.length; i++) {
+                    if (response[i].id > newId) {
+                        newId = response[i].id;
+                    }
+                }
+                
+                setProject({...project, id: newId + 1});
             } catch (error) {
                 console.error(error);
             }
         }
-
-        getProject();
-    }, []);
-
+ 
+        getProjects();
+    }
+    , []);
+    
     const handleSubmit = async (e, project) => {
         e.preventDefault();
         
-        const updatedProject = {
-            id: project.id,
+        const newProject = {
             name: project.name,
             tagline: project.tagline,
             description: project.description,
@@ -58,34 +65,44 @@ const EditSingleProjectPage = () => {
         };
         
         try {
-            await updateProject(project.id, updatedProject);
+            console.log(newProject);
+            await createProject(newProject);
             navigate('/projects');
         } catch (error) {
             console.error(error);
         }
     }
     
-    const handleTechStackChange = (index, value) => {
-        const updatedTechStack = [...project.techStack];
-        updatedTechStack[index] = value;
-        setProject({ ...project, techStack: updatedTechStack });
-    };
-
     const handleAddTechStack = () => {
-        setProject({ ...project, techStack: [...project.techStack, ''] });
-    };
-
+        setProject({...project, techStack: [...project.techStack, ""]});
+    }
+    
     const handleRemoveTechStack = (index) => {
-        const updatedTechStack = [...project.techStack];
-        updatedTechStack.splice(index, 1);
-        setProject({ ...project, techStack: updatedTechStack });
-    };
-
+        const newTechStack = [...project.techStack];
+        newTechStack.splice(index, 1);
+        setProject({...project, techStack: newTechStack});
+    }
+    
+    const handleTechStackChange = (index, value) => {
+        const newTechStack = [...project.techStack];
+        newTechStack[index] = value;
+        setProject({...project, techStack: newTechStack});
+    }
+    
     return (
         <div className={`edit-project-container animated-element ${animate ? "animate-in" : ""}`}>
             <h2>Edit Project</h2>
             <form onSubmit={(event) => handleSubmit(event, project)}>
-            {/* Name */}
+                {/* ID */}
+                <div className="form-group">
+                    <label>ID</label>
+                    <input
+                        type="text"
+                        value={project.id}
+                        onChange={(e) => setProject({...project, id: +e.target.value})}
+                    />
+                </div>
+                {/* Name */}
                 <div className="form-group">
                     <label>Name</label>
                     <input
@@ -154,7 +171,8 @@ const EditSingleProjectPage = () => {
                                 value={tech}
                                 onChange={(e) => handleTechStackChange(index, e.target.value)}
                             />
-                            <button type={"button"} onClick={() => handleRemoveTechStack(index)} className="delete-tech-button">Delete
+                            <button type={"button"} onClick={() => handleRemoveTechStack(index)}
+                                    className="delete-tech-button">Delete
                             </button>
                         </div>
                     ))}
@@ -174,10 +192,8 @@ const EditSingleProjectPage = () => {
                     </select>
                 </div>
 
-                <button type="submit">Update Project</button>
+                <button type="submit">Create Project</button>
             </form>
         </div>
     );
 }
-
-export default EditSingleProjectPage;

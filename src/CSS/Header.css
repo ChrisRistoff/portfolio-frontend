@@ -11,6 +11,12 @@
     transition: color 0.3s ease;
 }
 
+.navbar .dropdown-menu {
+  position: absolute;
+  z-index: 1050; /* High enough to be on top of other elements */
+  width: auto; /* Or set a specific width if needed */
+}
+
 .nav-link-custom:hover, .nav-link-custom:focus {
     color: #00a4e4 !important;
     text-decoration: none;

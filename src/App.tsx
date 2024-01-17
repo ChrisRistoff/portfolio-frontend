@@ -10,6 +10,7 @@ import AdminPage from "./Components/AdminPage.tsx";
 import {EditPersonalInfo} from "./Components/EditPersonalInfoPage.tsx";
 import EditProjectsPage from "./Components/EditProjectsPage.tsx";
 import EditSingleProjectPage from "./Components/EditSingleProjectPage.tsx";
+import {CreateNewProjectPage} from "./Components/CreateNewProjectPage.tsx";
 
 function App() {
     
@@ -25,6 +26,7 @@ function App() {
                 <Route path={"/edit-personal-info"} element={<EditPersonalInfo/>}/>
                 <Route path={"/edit-projects"} element={<EditProjectsPage />}/>
                 <Route path={"/edit-project/:projectId"} element={<EditSingleProjectPage />}/>
+                <Route path={"/create-project"} element={<CreateNewProjectPage />}/>
             </Routes>
         </>
     )
