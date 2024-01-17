@@ -45,6 +45,7 @@ p {
 }
 
 .profile-image {
+  height: 380px;
   border-radius: 50%;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, opacity 0.3s ease;

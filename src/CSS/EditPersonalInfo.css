@@ -65,6 +65,28 @@
   background-color: #0088cc;
 }
 
+.profile-photo-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.profile-photo-container {
+  margin-bottom: 15px;
+}
+
+.file-input {
+  width: auto; /* Adjusts the file input width */
+  margin-bottom: 10px;
+}
+
+.profile-photo {
+  max-width: 200px; /* Adjust size as needed */
+  height: auto;
+  border-radius: 4px;
+}
+
 @media (max-width: 768px) {
   .edit-form {
     padding: 20px;
