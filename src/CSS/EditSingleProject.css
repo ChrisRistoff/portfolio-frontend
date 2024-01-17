@@ -1,0 +1,82 @@
+ .edit-project-container {
+   background-color: #333;
+   padding: 20px;
+   max-width: 800px;
+   margin: auto;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+   color: white;
+ }
+
+ .tech-stack-item {
+   display: flex;
+   align-items: center;
+   margin-bottom: 5px;
+ }
+
+ .tech-stack-item input {
+   flex-grow: 1;
+   margin-right: 5px; /* Space between input and delete button */
+   /* Rest of your input styling */
+ }
+
+ .add-tech-button, .delete-tech-button {
+   padding: 5px 10px;
+   margin-left: 5px; /* Spacing between buttons */
+   border: none;
+   border-radius: 5px;
+   background-color: #00a4e4;
+   color: white;
+   font-size: 14px;
+   cursor: pointer;
+   transition: background-color 0.2s;
+ }
+
+ .add-tech-button:hover, .delete-tech-button:hover {
+   background-color: #ff6b6b;
+ }
+
+ .edit-project-container h2 {
+  color: #00a4e4;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ccc;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #444;
+  border: none;
+  color: white;
+}
+
+.save-project-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #00a4e4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-project-button:hover {
+  background-color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .edit-project-container {
+    padding: 15px;
+  }
+}

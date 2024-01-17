@@ -8,6 +8,8 @@ import Login from "./Components/Login.tsx";
 import {TestAuthPage} from "./Components/TestAuthPage.tsx";
 import AdminPage from "./Components/AdminPage.tsx";
 import {EditPersonalInfo} from "./Components/EditPersonalInfoPage.tsx";
+import EditProjectsPage from "./Components/EditProjectsPage.tsx";
+import EditSingleProjectPage from "./Components/EditSingleProjectPage.tsx";
 
 function App() {
     
@@ -21,6 +23,8 @@ function App() {
                 <Route path={"/projects"} element={<ProjectsPage />}/>
                 <Route path={"/admin"} element={<AdminPage />}/>
                 <Route path={"/edit-personal-info"} element={<EditPersonalInfo/>}/>
+                <Route path={"/edit-projects"} element={<EditProjectsPage />}/>
+                <Route path={"/edit-project/:projectId"} element={<EditSingleProjectPage />}/>
             </Routes>
         </>
     )
