@@ -1,4 +1,7 @@
 import "../CSS/ProjectCard.css"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faGithub} from "@fortawesome/free-brands-svg-icons";
+import {faLink} from "@fortawesome/free-solid-svg-icons";
 
 const Project = ({ project }) => {
     
@@ -19,10 +22,10 @@ const Project = ({ project }) => {
             </div>
             <div className="project-links">
                 <a href={`${project.repo}`} target="_blank" className="project-link">
-                    Repository
+                    <FontAwesomeIcon icon={faGithub} /> Repository
                 </a>
                 <a href={`${project.link}`} target="_blank" className="project-link">
-                    Live Demo
+                    <FontAwesomeIcon icon={faLink} /> Live Demo
                 </a>
             </div>
         </div>
