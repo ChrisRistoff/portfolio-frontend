@@ -2,6 +2,9 @@
 ## Overview
 ### This repository, portfolio-frontend, contains the frontend code for a personal portfolio website. It's built using React, TypeScript, and Vite, offering a modern, efficient, and scalable web application.
 
+## Integration with Backend
+- ### The frontend is designed to seamlessly integrate with the backend, [Portfolio Backend Repository](https://github.com/krasenHristov/portfolio-backend). The backend is responsible for storing and serving all of the data displayed on the frontend. The frontend is designed to be a static web application, which means that it does not contain any backend logic.
+
 ## Features
 - ### Responsive Design: Ensures a seamless experience across various devices and screen sizes.
 - ### Admin Dashboard: A secure admin interface for managing personal and project information.
