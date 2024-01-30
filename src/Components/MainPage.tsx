@@ -5,11 +5,22 @@ import { ContactForm } from "./ContactForm.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { getPersonalInfo } from "../utils/getPersonalInfo.tsx";
+import CV from "../assets/CV.pdf";
 
 export const Home = () => {
     const [animate, setAnimate] = useState(false);
     const [profileData, setProfileData] = useState<any>({});
     const [loading, setLoading] = useState(true);
+
+    const handleDownload = () => {
+
+        const link = document.createElement('a');
+        link.href = CV;
+        link.download = 'Krasen_Hristov_CV.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     useEffect(() => {
         const getProfileData = async () => {
@@ -70,6 +81,14 @@ export const Home = () => {
                         <a href="/projects" className="btn btn-outline-light">View My Projects</a>
                     </div>
                 </div>
+                
+                <div className={`animated-element ${animate ? "animate-in" : ""}`}>
+                </div>
+                
+                <div style={{padding: "20px"}} className={`animated-element ${animate ? "animate-in" : ""}`}>
+                    <div className={"btn btn-outline-light"} onClick={handleDownload}>Download My CV</div>
+                </div>
+
             </div>
         )
     );
