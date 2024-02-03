@@ -22,6 +22,7 @@ h1, h2, h3 {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.2;
   color: #00a4e4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 1.5);
 }
 
 h1 {
@@ -45,10 +46,11 @@ p {
 }
 
 .profile-image {
-  height: 380px;
+  height: 480px;
   border-radius: 50%;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, opacity 0.3s ease;
+  border: 2px solid #00a4e4;
 }
 
 .profile-image:hover {
@@ -118,5 +120,3 @@ button:hover {
     color: #fff;
   }
 }
-
-
