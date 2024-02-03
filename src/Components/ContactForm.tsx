@@ -72,7 +72,7 @@ export const ContactForm = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Your Email"
                                 required
-                                style={{ backgroundColor: "#444" }}
+                                style={{ backgroundColor: "#444", color: "white"}}
                             />
                         </Form.Group>
                         <Form.Group controlId="formSubject">
@@ -82,7 +82,7 @@ export const ContactForm = () => {
                                 onChange={(e) => setSubject(e.target.value)}
                                 placeholder="Subject"
                                 required
-                                style={{ backgroundColor: "#444" }}
+                                style={{ backgroundColor: "#444", color: "white" }}
                             />
                         </Form.Group>
                         <Form.Group controlId="formMessage">
@@ -93,7 +93,7 @@ export const ContactForm = () => {
                                 onChange={(e) => setMessage(e.target.value)}
                                 placeholder="Your Message"
                                 required
-                                style={{ backgroundColor: "#444" }}
+                                style={{ backgroundColor: "#444", color: "white"}}
                             />
                         </Form.Group>
 
