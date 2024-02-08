@@ -32,7 +32,7 @@ export const ProjectsPage = () => {
     }, []);
 
     return (
-        <div className="projects-page">
+        <div className={"container"}>
             <h1 className={`page-title animated-element ${animate ? "animate-in" : ""}`}>Projects</h1>
             {loading ? (
                 <div className="loading-text">

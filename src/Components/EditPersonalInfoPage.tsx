@@ -110,7 +110,7 @@ export const EditPersonalInfo = () => {
 
     return (
         
-        <div>
+        <div className='container'>
             {loading ? (
                 <div className="loading-text">
                     <h3>Loading...</h3>
