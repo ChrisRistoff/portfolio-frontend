@@ -6,7 +6,7 @@ import {Alert} from "react-bootstrap";
 
 export const CreateNewProjectPage = () => {
     const [project, setProject] = useState({
-        id: 0,
+        id: 0, 
         name: "",
         tagline: "",
         description: "",
@@ -28,34 +28,36 @@ export const CreateNewProjectPage = () => {
 
         return () => clearTimeout(animationTimeout);
     }, []);
-    
+
     useEffect(() => {
         const getProjects = async () => {
             try {
                 const response = await getProjectInfo();
-                
+
                 let newId = 0;
-                
+
                 for (let i = 0; i < response.length; i++) {
                     if (response[i].id > newId) {
                         newId = response[i].id;
                     }
                 }
-                
-                setProject({...project, id: newId + 1});
+
+                setProject(prevProject => ({...prevProject, id: newId + 1}));
+
             } catch (error) {
                 console.error(error);
             }
         }
- 
+
         getProjects();
-    }
-    , []);
+    }, []);
+
     
     const handleSubmit = async (e, project) => {
         e.preventDefault();
         
         const newProject = {
+            id: project.id,
             name: project.name,
             tagline: project.tagline,
             description: project.description,
@@ -118,6 +120,7 @@ export const CreateNewProjectPage = () => {
             )}
             <h2>Edit Project</h2>
             <form onSubmit={(event) => handleSubmit(event, project)}>
+ 
                 {/* ID */}
                 <div className="form-group">
                     <label>ID</label>
@@ -127,6 +130,7 @@ export const CreateNewProjectPage = () => {
                         onChange={(e) => setProject({...project, id: +e.target.value})}
                     />
                 </div>
+ 
                 {/* Name */}
                 <div className="form-group">
                     <label>Name</label>
