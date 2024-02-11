@@ -8,7 +8,7 @@ export const ProjectsPage = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [animate, setAnimate] = useState(false);
-    const [filter, setFilter] = useState('Web App'); // Step 1: Define the filter state
+    const [filter, setFilter] = useState('Web App');
 
     useEffect(() => {
         const animationTimeout = setTimeout(() => {
@@ -41,9 +41,10 @@ export const ProjectsPage = () => {
     return (
         <div className={"container"}>
             <div className="filter-buttons">
-                <button className={filter === 'Web App' ? 'active' : ''} onClick={() => setFilter('Web App')}>Web Apps</button>
-                <button className={filter === 'CLI' ? 'active' : ''} onClick={() => setFilter('CLI')}>CLI Apps</button>
+                <button className={filter === 'Web App' ? 'active' : ''} onClick={() => setFilter('Web App')}>Web Apps
+                </button>
                 <button className={filter === 'DSA' ? 'active' : ''} onClick={() => setFilter('DSA')}>DSA</button>
+                <button className={filter === 'CLI' ? 'active' : ''} onClick={() => setFilter('CLI')}>CLI Apps</button>
             </div>
             <h1 className={`page-title animated-element ${animate ? "animate-in" : ""}`}>Projects</h1>
             {loading ? (
