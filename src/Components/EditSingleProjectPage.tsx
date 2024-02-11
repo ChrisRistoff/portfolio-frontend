@@ -195,8 +195,9 @@ const EditSingleProjectPage = () => {
                         value={project.type}
                         onChange={(e) => setProject({...project, type: e.target.value})}
                     >
-                        <option value="Frontend">Frontend</option>
-                        <option value="Backend">Backend</option>
+                        <option value="Web App">Web App</option>
+                        <option value="DSA">DSA</option>
+                        <option value="CLI">CLI</option>
                     </select>
                 </div>
 
