@@ -24,9 +24,11 @@ const Project = ({ project }) => {
                 <a href={`${project.repo}`} target="_blank" className="project-link">
                     <FontAwesomeIcon icon={faGithub} /> Repository
                 </a>
-                <a href={`${project.link}`} target="_blank" className="project-link">
-                    <FontAwesomeIcon icon={faLink} /> Live Demo
-                </a>
+                {(project.link) &&
+                    <a href={`${project.link}`} target="_blank" className="project-link">
+                        <FontAwesomeIcon icon={faLink} /> Live Demo
+                    </a>
+                }
             </div>
         </div>
     );
