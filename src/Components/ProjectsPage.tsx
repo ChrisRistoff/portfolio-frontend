@@ -40,13 +40,13 @@ export const ProjectsPage = () => {
 
     return (
         <div className={"container"}>
-            <div className="filter-buttons">
+            <h1 className={`page-title animated-element ${animate ? "animate-in" : ""}`}>Projects</h1>
+            <div className={`filter-buttons animated-element ${animate ? "animate-in" : ""}`}>
                 <button className={filter === 'Web App' ? 'active' : ''} onClick={() => setFilter('Web App')}>Web Apps
                 </button>
                 <button className={filter === 'DSA' ? 'active' : ''} onClick={() => setFilter('DSA')}>DSA</button>
                 <button className={filter === 'CLI' ? 'active' : ''} onClick={() => setFilter('CLI')}>CLI Apps</button>
             </div>
-            <h1 className={`page-title animated-element ${animate ? "animate-in" : ""}`}>Projects</h1>
             {loading ? (
                 <div className="loading-text">
                     <h3>Loading Projects...</h3>
@@ -56,7 +56,7 @@ export const ProjectsPage = () => {
                 <div className="projects-list">
                     <div className={`animated-element ${animate ? "animate-in" : ""}`}>
                         {filteredProjects.map((project) => (
-                            <Project key={project.name} project={project} />
+                            <Project key={project.name} project={project}/>
                         ))}
                     </div>
                 </div>
