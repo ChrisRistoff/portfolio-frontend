@@ -16,7 +16,7 @@ export const Home = () => {
 
         const link = document.createElement('a');
         link.href = CV;
-        link.download = 'Krasen_Hristov_CV.pdf';
+        link.download = 'Chris_Ristoff_CV.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
