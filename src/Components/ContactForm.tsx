@@ -59,7 +59,7 @@ export const ContactForm = () => {
                             <Form.Control
                                 type="text"
                                 onChange={(e) => setName(e.target.value)}
-                                placeholder="Your Name"
+                                placeholder="Enter your name..."
                                 required
                             />
                         </Form.Group>
@@ -68,7 +68,7 @@ export const ContactForm = () => {
                             <Form.Control
                                 type="email"
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Your Email"
+                                placeholder="Enter your email..."
                                 required
                             />
                         </Form.Group>
@@ -77,7 +77,7 @@ export const ContactForm = () => {
                             <Form.Control
                                 type="text"
                                 onChange={(e) => setSubject(e.target.value)}
-                                placeholder="Subject"
+                                placeholder="Enter the subject..."
                                 required
                             />
                         </Form.Group>
@@ -87,7 +87,7 @@ export const ContactForm = () => {
                                 as="textarea"
                                 rows={4}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder="Your Message"
+                                placeholder="Enter your message..."
                                 required
                             />
                         </Form.Group>

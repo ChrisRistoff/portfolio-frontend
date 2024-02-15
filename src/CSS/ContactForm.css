@@ -2,6 +2,7 @@
   background-color: #444;
 }
 
+
 .modal-body {
   background-color: #444;
   color: #100;
@@ -24,6 +25,15 @@
   background-color: #444;
   width: 100%;
   max-width: 800px;
+}
+
+.custom-modal .form-control::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+.custom-modal .modal-footer {
+  border-top: 1px solid #333;
 }
 
 .custom-modal .modal-dialog {
