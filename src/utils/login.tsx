@@ -32,6 +32,7 @@ export const loginAdmin = async (name: string, password: string) => {
         });
         
         setTokenInCookie(response.data.token);
+        localStorage.setItem('admin', 'true');
         return {message: response.data};
     } catch (error) {
         throw error;

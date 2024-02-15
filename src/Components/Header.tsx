@@ -26,7 +26,11 @@ export const Header = () => {
                         <Nav.Link href="/projects" className="nav-link-custom mx-2">Projects</Nav.Link>
                     </Nav>
                     <Nav className="ms-auto">
+                        {localStorage.getItem('admin') === 'true' ? (
+                            <Nav.Link href="/admin" className="nav-link-custom mx-2">Admin Panel</Nav.Link>
+                        ) : 
                         <Nav.Link href="/login" className="nav-link-custom mx-2">Admin Login</Nav.Link>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
