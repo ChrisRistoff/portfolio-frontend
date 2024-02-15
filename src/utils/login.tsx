@@ -51,3 +51,9 @@ export const testAuth = async () => {
         return error.response.data;
     }
 }
+
+
+export const logout = () => {
+    document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Strict';
+    localStorage.removeItem('admin');
+}

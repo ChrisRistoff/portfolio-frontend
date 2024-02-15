@@ -25,6 +25,21 @@ h1, h2, h3 {
   text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
+.stats-container h4 {
+  font-weight: bold;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.highlight-stat {
+  font-size: 1.2em;
+  animation: pulse 2s ease-in-out alternate 2;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.5); }
+}
+
 h1 {
   font-size: 36px;
   margin-bottom: 20px;
@@ -93,6 +108,11 @@ button:hover {
 .contact-form-section,
 .projects-button {
   margin-top: 30px;
+}
+
+.stats-container {
+  border-radius: 8px;
+  padding: 20px;
 }
 
 @media (max-width: 768px) {
