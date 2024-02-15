@@ -13,7 +13,7 @@ const Project = ({ project }) => {
                 <p className="project-description">{project.description}</p>
             </div>
             <div className="tech-stack">
-                <h4>Tech Stack:</h4>
+                <h4>Tech Stack</h4>
                 <ul>
                     {project.techStack.map((tech, index) => {
                         return <li key={index}>{tech}</li>
