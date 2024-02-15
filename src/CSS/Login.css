@@ -1,5 +1,8 @@
 .login-container {
   display: flex;
+  background: linear-gradient(to bottom, #111 0%, #444 100%);
+  background-attachment: fixed;
+  font-family: 'Open Sans', sans-serif;
   justify-content: center;
   align-items: center;
   height: 100vh;

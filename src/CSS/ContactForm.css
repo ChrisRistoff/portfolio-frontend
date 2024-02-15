@@ -1,0 +1,39 @@
+.modal-header {
+  background-color: #444;
+}
+
+.modal-body {
+  background-color: #444;
+  color: #100;
+}
+
+.modal-footer {
+  background-color: #444;
+}
+
+.modal-body .form-label {
+  color: white;
+}
+
+.modal-body .form-control {
+  background-color: #444;
+  color: white;
+}
+
+.custom-modal .modal-content {
+  background-color: #444;
+  width: 100%;
+  max-width: 800px;
+}
+
+.custom-modal .modal-dialog {
+  margin: 30px auto;
+}
+
+@media (max-width: 768px) {
+  .custom-modal .modal-dialog {
+    max-width: 95%;
+    margin: 30px auto;
+  }
+}
+

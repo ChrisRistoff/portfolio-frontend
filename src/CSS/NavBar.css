@@ -1,0 +1,15 @@
+.custom-navbar .navbar-nav:first-of-type {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+}
+
+@media (max-width: 990px) {
+  .custom-navbar .navbar-nav:first-of-type {
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    width: auto !important;
+  }
+}

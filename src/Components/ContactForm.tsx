@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import {sendEmail} from "../utils/sendEmail.tsx";
+import "../CSS/ContactForm.css";
 
 export const ContactForm = () => {
     const [showModal, setShowModal] = useState(false);
@@ -38,7 +39,7 @@ export const ContactForm = () => {
     };
 
     return (
-        <>
+        <div>
             <Button variant="outline-light" onClick={handleModalShow}>
                 Contact me
             </Button>
@@ -46,54 +47,48 @@ export const ContactForm = () => {
             <Modal
                 show={showModal}
                 onHide={handleModalClose}
-                style={{
-                    backgroundColor: "#your-modal-background-color",
-                }}
+                className="custom-modal"
             >
-                <Modal.Header closeButton style={{ backgroundColor: "#444" }}>
-                    <Modal.Title style={{ color: "#your-title-color" }}>Contact Me</Modal.Title>
+                <Modal.Header closeButton>
+                    <Modal.Title>Contact Me</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ backgroundColor: "#444", color: "#100" }}>
+                <Modal.Body>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formName">
-                            <Form.Label style={{ color: "white" }}>Name</Form.Label>
+                            <Form.Label >Name</Form.Label>
                             <Form.Control
                                 type="text"
                                 onChange={(e) => setName(e.target.value)}
                                 placeholder="Your Name"
                                 required
-                                style={{ backgroundColor: "#444", color: "white" }}
                             />
                         </Form.Group>
                         <Form.Group controlId="formEmail">
-                            <Form.Label style={{ color: "white" }}>Email</Form.Label>
+                            <Form.Label >Email</Form.Label>
                             <Form.Control
                                 type="email"
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Your Email"
                                 required
-                                style={{ backgroundColor: "#444", color: "white"}}
                             />
                         </Form.Group>
                         <Form.Group controlId="formSubject">
-                            <Form.Label style={{ color: "white" }}>Subject</Form.Label>
+                            <Form.Label >Subject</Form.Label>
                             <Form.Control
                                 type="text"
                                 onChange={(e) => setSubject(e.target.value)}
                                 placeholder="Subject"
                                 required
-                                style={{ backgroundColor: "#444", color: "white" }}
                             />
                         </Form.Group>
                         <Form.Group controlId="formMessage">
-                            <Form.Label style={{ color: "white" }}>Message</Form.Label>
+                            <Form.Label>Message</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={4}
                                 onChange={(e) => setMessage(e.target.value)}
                                 placeholder="Your Message"
                                 required
-                                style={{ backgroundColor: "#444", color: "white"}}
                             />
                         </Form.Group>
 
@@ -109,7 +104,7 @@ export const ContactForm = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div>
     );
 };
 
