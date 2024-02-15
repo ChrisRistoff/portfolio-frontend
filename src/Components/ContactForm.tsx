@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import {sendEmail} from "../utils/sendEmail.tsx";
+import "../CSS/ContactForm.css";
 
 export const ContactForm = () => {
     const [showModal, setShowModal] = useState(false);
@@ -38,7 +39,7 @@ export const ContactForm = () => {
     };
 
     return (
-        <>
+        <div>
             <Button variant="outline-light" onClick={handleModalShow}>
                 Contact me
             </Button>
@@ -46,12 +47,9 @@ export const ContactForm = () => {
             <Modal
                 show={showModal}
                 onHide={handleModalClose}
-                style={{
-                    backgroundColor: "#your-modal-background-color",
-                }}
             >
                 <Modal.Header closeButton style={{ backgroundColor: "#444" }}>
-                    <Modal.Title style={{ color: "#your-title-color" }}>Contact Me</Modal.Title>
+                    <Modal.Title>Contact Me</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ backgroundColor: "#444", color: "#100" }}>
                     <Form onSubmit={handleSubmit}>
@@ -109,7 +107,7 @@ export const ContactForm = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div>
     );
 };
 

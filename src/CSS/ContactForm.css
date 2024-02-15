@@ -1,0 +1,10 @@
+.modal-dialog {
+  max-width: 1024px;  /* Adjust as desired */
+  margin: 30px auto; /* Centers the modal horizontally */
+}
+
+@media (min-width: 992px) { /* Target tablets and larger */
+  .modal-dialog {
+    max-width: 700px;
+  }
+}
