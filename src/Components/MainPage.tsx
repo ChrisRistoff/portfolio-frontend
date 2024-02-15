@@ -7,6 +7,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { getPersonalInfo } from "../utils/getPersonalInfo.tsx";
 import CV from "../assets/CV.pdf";
 import statsData from "../../githubStats.json";
+import {faCodeBranch, faFolder, faMinusCircle, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
 export const Home = () => {
     const [animate, setAnimate] = useState(false);
@@ -65,7 +66,7 @@ export const Home = () => {
             count += step;
             
             // set text content to the current count
-            el.textContent = `${pre} ${Math.floor(count).toLocaleString()} ${post}`; // Adjust text content based on your needs
+            el.textContent = `${pre} ${Math.floor(count).toLocaleString()} ${post}`;
             
             // Check if target is reached
             if (count >= target) {
@@ -74,7 +75,7 @@ export const Home = () => {
                 clearInterval(counter);
                 
                 // Set text content to exact target
-                el.textContent = `${pre} ${target.toLocaleString()} ${post}`; // Ensure it ends on exact target
+                el.textContent = `${pre} ${target.toLocaleString()} ${post}`;
             }
         }, incrementTime);
     }
@@ -114,16 +115,10 @@ export const Home = () => {
                         <h3 className={`animated-element ${animate ? "animate-in" : ""}`}>{profileData.title}</h3>
                         <p className={`animated-element ${animate ? "animate-in" : ""}`}>{profileData.bio}</p>
                         <div className={`animated-element ${animate ? "animate-in" : ""}`}>
-                            <a href={profileData.github} target="_blank" rel="noopener noreferrer"
-                               className="contact-link">
-                                <FontAwesomeIcon icon={faGithub}/> Visit GitHub
-                            </a>
-                            {profileData.linkedin && (
-                                <a href={profileData.linkedin} target="_blank" rel="noopener noreferrer"
-                                   className="contact-link">
-                                    <FontAwesomeIcon icon={faLinkedin}/> Visit LinkedIn
-                                </a>
-                            )}
+                        <a href="https://www.linkedin.com/in/chris-ristoff-1663362b0" target="_blank" rel="noopener noreferrer"
+                          className="contact-link">
+                          <FontAwesomeIcon icon={faLinkedin}/> Visit LinkedIn
+                        </a>
                         </div>
                     </Col>
                     <Col md={6}>
@@ -138,12 +133,27 @@ export const Home = () => {
 
                 {/*Stats*/}
                 <div className={`stats-container animated-element ${animate ? "animate-in" : ""}`}>
-                    <h2>GitHub Stats</h2>
-                    <h4 ref={totalLinesAddedRef}> Added 0 lines of code</h4>
-                    <h4 ref={totalLinesDeletedRef}> Deleted 0 lines of code </h4>
-                    <h4 ref={totalCommitsRef}> Committed 0 times</h4>
-                    <h4 ref={numberOfRepositoriesRef}> In 0 repositories</h4>
+                    <h2>
+                        <a href="https://github.com/chrisristoff" target="_blank" rel="noopener noreferrer">
+                            <FontAwesomeIcon icon={faGithub}/> GitHub
+                        </a>
+                    </h2>
+                    <h4 className="highlight-stat">
+                        <FontAwesomeIcon icon={faPlusCircle}/> <span
+                        ref={totalLinesAddedRef}>Added 0 lines of code</span>
+                    </h4>
+                    <h4 className="highlight-stat">
+                        <FontAwesomeIcon icon={faMinusCircle}/> <span
+                        ref={totalLinesDeletedRef}>Deleted 0 lines of code</span>
+                    </h4>
+                    <h4 className="highlight-stat">
+                        <FontAwesomeIcon icon={faCodeBranch}/> <span ref={totalCommitsRef}>Committed 0 times</span>
+                    </h4>
+                    <h4 className="highlight-stat">
+                        <FontAwesomeIcon icon={faFolder}/> <span ref={numberOfRepositoriesRef}>In 0 repositories</span>
+                    </h4>
                 </div>
+
 
                 {/*Button to download CV and contact form*/}
                 <div className={`animated-element ${animate ? "animate-in" : ""}`}>
