@@ -1,10 +1,31 @@
-.modal-dialog {
-  max-width: 1024px;  /* Adjust as desired */
-  margin: 30px auto; /* Centers the modal horizontally */
+.modal-header {
+  background-color: #444;
 }
 
-@media (min-width: 992px) { /* Target tablets and larger */
-  .modal-dialog {
-    max-width: 700px;
-  }
+.modal-body {
+  background-color: #444;
+  color: #100;
+}
+
+.modal-footer {
+  background-color: #444;
+}
+
+.modal-body .form-label {
+  color: white;
+}
+
+.modal-body .form-control {
+  background-color: #444;
+  color: white;
+}
+
+.custom-modal .modal-content {
+  background-color: #444;
+  width: 100%;
+  max-width: 800px;
+}
+
+.custom-modal .modal-dialog {
+  margin: 30px auto;
 }
