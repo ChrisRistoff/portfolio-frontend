@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { getPersonalInfo } from "../utils/getPersonalInfo.tsx";
 import CV from "../assets/CV.pdf";
+import statsData from "../../githubStats.json";
 
 export const Home = () => {
     const [animate, setAnimate] = useState(false);
@@ -17,7 +18,7 @@ export const Home = () => {
     const totalLinesDeletedRef = useRef(null);
     const totalCommitsRef = useRef(null);
     const numberOfRepositoriesRef = useRef(null);
-
+    
     const handleDownload = () => {
 
         const link = document.createElement('a');
@@ -34,9 +35,7 @@ export const Home = () => {
                 let data = await getPersonalInfo();
                 setProfileData(data);
                 
-                let stats = await fetch('../../githubStats.json');
-                stats = await stats.json();
-                setStats(stats);
+                setStats(statsData);
 
                 setLoading(false);
             } catch (error) {
