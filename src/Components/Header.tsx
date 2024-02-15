@@ -3,6 +3,7 @@ import "../CSS/Header.css";
 import "../CSS/MainPage.css";
 import {useEffect, useState} from "react";
 import "../CSS/NavBar.css"
+import {logout} from "../utils/login.tsx";
 
 export const Header = () => {
     const [animate, setAnimate] = useState(false);
@@ -14,6 +15,10 @@ export const Header = () => {
 
         return () => clearTimeout(animationTimeout);
     }, []);
+    
+    const handleLogout = () => {
+        logout();
+    }
 
     return (
         <div className={`animated-element ${animate ? "animate-in" : ""}`}>
@@ -27,7 +32,10 @@ export const Header = () => {
                     </Nav>
                     <Nav className="ms-auto">
                         {localStorage.getItem('admin') === 'true' ? (
-                            <Nav.Link href="/admin" className="nav-link-custom mx-2">Admin Panel</Nav.Link>
+                            <div>
+                                <Nav.Link href="/admin" className="nav-link-custom mx-2">Admin Panel</Nav.Link>
+                                <Nav.Link href="/" onClick={handleLogout} className="nav-link-custom mx-2">Logout</Nav.Link>
+                            </div>
                         ) : 
                         <Nav.Link href="/login" className="nav-link-custom mx-2">Admin Login</Nav.Link>
                         }
